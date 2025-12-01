@@ -1,66 +1,60 @@
 package frc.robot.subsystems;
 
+// ==================================================インポート==================================================
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
 
 public class DriveSubsystem extends SubsystemBase {
-  private final PWMSparkMax leftMotor_f = new PWMSparkMax(2);
-  private final PWMSparkMax leftMotor_b = new PWMSparkMax(3);
+  // ==================================================パーツ定義==================================================
+  private final PWMSparkMax leftLeader = new PWMSparkMax(2);
+  private final PWMSparkMax leftFollower = new PWMSparkMax(3);
+  private final PWMSparkMax rightLeader = new PWMSparkMax(4);
+  private final PWMSparkMax rightFollower = new PWMSparkMax(5);
 
-  private final PWMSparkMax rightMotor_f = new PWMSparkMax(4);
-  private final PWMSparkMax rightMotor_b = new PWMSparkMax(5);
 
-  /** Creates a new DriveSubsystem. */
-  public void arcadeDrive(double forward, double rotation) {
-    double left = forward + rotation;
-    double right = forward - rotation;
+  // ==================================================メソッド/クラスのインスタンス作成==================================================
+  private final DifferentialDrive drive = new DifferentialDrive(leftLeader, rightLeader);
 
-    if (left > 1.0) {
-      left = 1.0;
-    } else if (left < -1.0) {
-      left = -1.0;
-    }
-    if (right > 1.0) {
-      right = 1.0;
-    } else if (right < -1.0) {
-      right = -1.0;
-    }
 
-    leftMotor_f.set(-left);
-    leftMotor_b.set(-left);
+  // ==================================================メソッド/クラスのインスタンス作成==================================================
+  private final double speedScaler = 0.5;
 
-    rightMotor_f.set(right);
-    rightMotor_b.set(right);
+
+  // ==================================================初期化==================================================
+  public DriveSubsystem() {
+    leftLeader.addFollower(leftFollower);
+    rightLeader.addFollower(rightFollower);
   }
 
-  /**
-   * Example command factory method.
-   *
-   * @return a command
-   */
+
+  // ==================================================実行する処理==================================================
+  public void arcadeDrive(double forward, double rotation) {
+    drive.arcadeDrive(forward * speedScaler, rotation * speedScaler);
+  }
+
+
   public Command exampleMethodCommand() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires `this` subsystem.
     return runOnce(
         () -> {
-          /* one-time action goes here */
         });
   }
+
 
   public boolean exampleCondition() {
     return false;
   }
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
 
   @Override
+  public void periodic() {
+  }
+
+  
+  @Override
   public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
   }
 }
 

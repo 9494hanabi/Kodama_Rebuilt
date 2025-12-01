@@ -14,6 +14,7 @@ public class ShootSubsystem extends SubsystemBase {
     public void shoot(double leftpower, double rightpower) {
         shootMotor_R.set(leftpower);
         shootMotor_L.set(-rightpower);
+        shootServo.set(0.5);
     }
 
     public void shootStop() {

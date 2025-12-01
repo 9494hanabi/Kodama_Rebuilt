@@ -19,9 +19,12 @@ import frc.robot.subsystems.ShootAngleSubsystem; //ShootAngleSubsystemのイン�
 public class RobotContainer {
   // ロボットのサブシステムとコマンドはここに定義されています...
   private final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
+
+  // ==========================================シュートサブシステムのインスタンス作成==========================================
   private final ShootSubsystem m_shootSubsystem = new ShootSubsystem();
   private final ShootAngleSubsystem m_shootAngleSubsystem = new ShootAngleSubsystem();
 
+  // ==========================================Xboxコントローラーのインスタンス作成==========================================
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
@@ -45,7 +48,7 @@ public class RobotContainer {
             () -> m_shootSubsystem.shoot(
                   m_driverController.getLeftTriggerAxis(),   // 左モーター
                   m_driverController.getRightTriggerAxis()   // 右モーター
-            ), 
+            ),
             m_shootSubsystem));
     
     // Yボタンでサーボを動かす

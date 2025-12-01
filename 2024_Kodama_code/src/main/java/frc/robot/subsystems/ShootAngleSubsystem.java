@@ -1,14 +1,15 @@
 package frc.robot.subsystems;
 
+// ==================================================インポート==================================================
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
+import edu.wpi.first.math.controller.PIDController;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import edu.wpi.first.math.controller.PIDController;
 
 public class ShootAngleSubsystem extends SubsystemBase {
   private final SparkMax angleMotor = new SparkMax(1, MotorType.kBrushless);

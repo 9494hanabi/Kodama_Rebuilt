@@ -6,11 +6,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 
 public class DriveSubsystem extends SubsystemBase {
-  private final PWMSparkMax leftMotor_0 = new PWMSparkMax(0);
-  private final PWMSparkMax leftMotor_1 = new PWMSparkMax(1);
+  private final PWMSparkMax leftMotor_f = new PWMSparkMax(2);
+  private final PWMSparkMax leftMotor_b = new PWMSparkMax(3);
 
-  private final PWMSparkMax rightMotor_0 = new PWMSparkMax(2);
-  private final PWMSparkMax rightMotor_1 = new PWMSparkMax(3);
+  private final PWMSparkMax rightMotor_f = new PWMSparkMax(4);
+  private final PWMSparkMax rightMotor_b = new PWMSparkMax(5);
 
     /** Creates a new DriveSubsystem. */
     public void arcadeDrive(double forward, double rotation) {
@@ -28,11 +28,11 @@ public class DriveSubsystem extends SubsystemBase {
         right = -1.0;
       }
 
-      leftMotor_0.set(left);
-      leftMotor_1.set(-left);
+      leftMotor_f.set(left);
+      leftMotor_b.set(-left);
 
-      rightMotor_0.set(-right);
-      rightMotor_1.set(right);
+      rightMotor_f.set(-right);
+      rightMotor_b.set(right);
     }
   
     /**

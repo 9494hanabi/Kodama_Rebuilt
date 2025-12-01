@@ -3,20 +3,21 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix6.hardware.CANcoder;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkMax;
 
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import edu.wpi.first.math.controller.PIDController;
 
 public class ShootAngleSubsystem extends SubsystemBase {
-  private final Spark angleMotor = new Spark(6);
+  private final SparkMax angleMotor = new SparkMax(1, MotorType.kBrushless);
   private final CANcoder angleEncoder = new CANcoder(0);
 
 
-  private final double IntakePositon = 20.0; // インテークの角度、例: 20度
-  private final double ShootPositon = 60.0; // シュートの角度、例: 60度
-  private final double NomalPositon = 40.0; // 通常位置の角度、例: 40度
+  private final double IntakePositon = 8; // インテークの角度、例: 20度
+  private final double ShootPositon = 70; // シュートの角度、例: 60度
+  private final double NomalPositon = 87; // 通常位置の角度、例: 40度
   private final PIDController pidController = new PIDController(0.1, 0.0, 0.0); // PID制御器のパラメータ
   
   private double targetAngleDeg = 20.0; // 目標角度、例: 20度

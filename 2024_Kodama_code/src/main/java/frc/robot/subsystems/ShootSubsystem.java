@@ -7,9 +7,9 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import edu.wpi.first.wpilibj.Servo;
 
 public class ShootSubsystem extends SubsystemBase {
-    private final SparkMax shootMotor_R = new SparkMax(1, MotorType.kBrushless);
-    private final SparkMax shootMotor_L = new SparkMax(2, MotorType.kBrushless);
-    private final Servo shootServo = new Servo(5);
+    private final SparkMax shootMotor_R = new SparkMax(2, MotorType.kBrushless);
+    private final SparkMax shootMotor_L = new SparkMax(11, MotorType.kBrushless);
+    private final Servo shootServo = new Servo(6);
     
     public void shoot(double leftpower, double rightpower) {
         shootMotor_R.set(leftpower);

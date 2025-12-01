@@ -72,8 +72,13 @@ public class RobotContainer {
     /*こっからシュートアングルのキーバインド */
     // Aボタンでインテーク位置に移動
     m_driverController.a().onTrue(
-    new InstantCommand(m_shootAngleSubsystem::setIntakePositon, m_shootAngleSubsystem)
-    );
+    new InstantCommand(
+            () -> {
+                  m_shootAngleSubsystem.setIntakePositon();
+                  m_shootSubsystem.shootIntake(); // ← 追加したい処理
+            },
+            m_shootAngleSubsystem));
+    
     // Bボタンでシュート位置に移動
     m_driverController.b().onTrue(
     new InstantCommand(m_shootAngleSubsystem::setShootPositon, m_shootAngleSubsystem)

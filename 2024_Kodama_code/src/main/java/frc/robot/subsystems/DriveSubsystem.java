@@ -12,60 +12,56 @@ public class DriveSubsystem extends SubsystemBase {
   private final PWMSparkMax rightMotor_f = new PWMSparkMax(4);
   private final PWMSparkMax rightMotor_b = new PWMSparkMax(5);
 
-    /** Creates a new DriveSubsystem. */
-    public void arcadeDrive(double forward, double rotation) {
-      double left = forward + rotation;
-      double right = forward - rotation;
+  /** Creates a new DriveSubsystem. */
+  public void arcadeDrive(double forward, double rotation) {
+    double left = forward + rotation;
+    double right = forward - rotation;
 
-      if (left > 1.0) {
-        left = 1.0;
-      } else if (left < -1.0) {
-        left = -1.0;
-      }
-      if (right > 1.0) {
-        right = 1.0;
-      } else if (right < -1.0) {
-        right = -1.0;
-      }
+    if (left > 1.0) {
+      left = 1.0;
+    } else if (left < -1.0) {
+      left = -1.0;
+    }
+    if (right > 1.0) {
+      right = 1.0;
+    } else if (right < -1.0) {
+      right = -1.0;
+    }
 
-      leftMotor_f.set(left);
-      leftMotor_b.set(-left);
+    leftMotor_f.set(-left);
+    leftMotor_b.set(-left);
 
-      rightMotor_f.set(-right);
-      rightMotor_b.set(right);
-    }
-  
-    /**
-     * Example command factory method.
-     *
-     * @return a command
-     */
-    public Command exampleMethodCommand() {
-      // Inline construction of command goes here.
-      // Subsystem::RunOnce implicitly requires `this` subsystem.
-      return runOnce(
-          () -> {
-            /* one-time action goes here */
-          });
-    }
-  
-    /**
-     * An example method querying a boolean state of the subsystem (for example, a digital sensor).
-     *
-     * @return value of some boolean subsystem state, such as a digital sensor.
-     */
-    public boolean exampleCondition() {
-      // Query some boolean state, such as a digital sensor.
-      return false;
-    }
-  
-    @Override
-    public void periodic() {
-      // This method will be called once per scheduler run
-    }
-  
-    @Override
-    public void simulationPeriodic() {
-      // This method will be called once per scheduler run during simulation
-    }
+    rightMotor_f.set(right);
+    rightMotor_b.set(right);
   }
+
+  /**
+   * Example command factory method.
+   *
+   * @return a command
+   */
+  public Command exampleMethodCommand() {
+    // Inline construction of command goes here.
+    // Subsystem::RunOnce implicitly requires `this` subsystem.
+    return runOnce(
+        () -> {
+          /* one-time action goes here */
+        });
+  }
+
+  public boolean exampleCondition() {
+    return false;
+  }
+
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+  }
+
+  @Override
+  public void simulationPeriodic() {
+    // This method will be called once per scheduler run during simulation
+  }
+}
+
+  

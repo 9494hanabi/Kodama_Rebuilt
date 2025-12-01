@@ -1,0 +1,44 @@
+{
+    "driveMotor" : {
+        "leftLeader":{
+            "type":"pwm",
+            "id": 0,
+            "invert": false
+        },
+        "leftFollower":{
+            "type":"pwm",
+            "id": 0,
+            "invert": false
+        },
+        "rightLeader":{
+            "type":"pwm",
+            "id": 0,
+            "invert": false
+        },
+        "rightFollower":{
+            "type":"pwm",
+            "id": 0,
+            "invert": false
+        }
+    },
+    "scoringMotor" : {
+        "settingMotor":{
+            "Servo":{
+                "type":"pwm",
+                "id": 0,
+                "invert":false
+            }
+        },
+        "shootingMotor": {
+            "left":{
+                "type":"pwm",
+                "id": 0,
+                "invert":false
+            },
+            "right":{
+                "type":"pwm",
+                "id": 0
+            }
+        }
+    }
+}

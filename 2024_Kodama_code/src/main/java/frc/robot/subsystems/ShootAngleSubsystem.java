@@ -15,12 +15,12 @@ public class ShootAngleSubsystem extends SubsystemBase {
   private final CANcoder angleEncoder = new CANcoder(0);
 
 
-  private final double IntakePositon = 8; // インテークの角度、例: 20度
-  private final double ShootPositon = 70; // シュートの角度、例: 60度
-  private final double NomalPositon = 87; // 通常位置の角度、例: 40度
-  private final PIDController pidController = new PIDController(0.1, 0.0, 0.0); // PID制御器のパラメータ
+  private final double IntakePositon = 8;
+  private final double ShootPositon = 70;
+  private final double NomalPositon = 87;
+  private final PIDController pidController = new PIDController(0.1, 0.0, 0.0);
   
-  private double targetAngleDeg = 20.0; // 目標角度、例: 20度
+  private double targetAngleDeg = 20.0;
   
   public void setIntakePositon() {
     targetAngleDeg = IntakePositon;
@@ -36,6 +36,7 @@ public class ShootAngleSubsystem extends SubsystemBase {
     angle = angle * 360.0; // 0.0〜1.0を0.0〜360.0に変換
     return angle;
   }
+
   @Override
   public void periodic() {
     double currentAngle = getCurrentAngleDeg(); // 現在の角度を取得
